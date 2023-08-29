@@ -1,5 +1,3 @@
-// debugger
-
 const elMode = document.querySelector(".site-header__mode");
 const mode = JSON.parse(localStorage.getItem("mode") || "false");
 localStorage.setItem("mode", mode)
