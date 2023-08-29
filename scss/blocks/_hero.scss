@@ -1,0 +1,77 @@
+@use "../veriables";
+@use "../mixins" as m;
+
+/* Hero styles started */
+
+.hero {
+  padding-top: 24px;
+  padding-bottom: 32px;
+}
+
+.hero__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.hero__input {
+  padding: 14px 20px 14px 74px;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--main-text-color);
+  background-color: var(--extra-bg-color);
+  background-image: url("../../images/search.svg");
+  background-repeat: no-repeat;
+  background-position: 32px center;
+  border-radius: 5px;
+  box-shadow: 0px 2px 9px 0px #0000000d;
+  border: none;
+  outline: none;
+}
+
+.hero__select {
+  padding: 14px 19px 14px 24px;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--main-text-color);
+  border: none;
+  background-color: var(--extra-bg-color);
+  background-image: url("../../images/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right 19px center;
+  border-radius: 5px;
+  box-shadow: 0px 2px 9px 0px #0000000d;
+  outline: none;
+  appearance: none;
+}
+
+.dark .hero__input {
+  background-image: url("../../images/searchdark.svg");
+}
+
+.dark .hero__select {
+  background-image: url("../../images/arrowdark.svg");
+}
+
+@include m.responsive(768px) {
+  .hero__form {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .hero__input {
+    max-width: 480px;
+    width: 100%;
+    font-size: 14px;
+    line-height: normal;
+  }
+  
+  .hero__select {
+    max-width: 200px;
+    width: 100%;
+    font-size: 14px;
+    line-height: normal;
+  }
+}
+
+/* Hero styles finished */
