@@ -29,48 +29,52 @@ async function getFlagsData(url) {
     renderFlags(data);
   } catch (error) {
     const err = error.message;
-    return err;
+    renderFlags(err)
   }
 }
 
 function renderFlags(data) {
   elList.innerHTML = "";
-  data.forEach(item => {
-    const liElement = document.createElement("li");
-    liElement.classList.add("list__item");
-    liElement.innerHTML = `
-    <img class="list__img" src="${item.flags.svg}"
-            width="264"
-            height="160"
-            alt="${item.flags.alt}">
-            <div class="list__item-inner">
-              <h3 class="list__subtitle">${item.name.common}</h3>
-              <ul class="list__inner-list">
-                <li class="list__inner-item">
-                  <strong class="list__bold">Population:</strong> ${item.population}
-                </li>
-                <li class="list__inner-item">
-                  <strong class="list__bold">Region:</strong> ${item.region}
-                </li>
-                <li class="list__inner-item">
-                  <strong class="list__bold">Capital:</strong> ${item.capital}
-                </li>
-              </ul>
-            </div>
-    `
-    collectorFragment.appendChild(liElement);
-  });
-  elList.appendChild(collectorFragment);
+  if(typeof data === "object") {
+    data.forEach(item => {
+      const liElement = document.createElement("li");
+      liElement.classList.add("list__item");
+      liElement.innerHTML = `
+      <img class="list__img" src="${item.flags.svg}"
+      width="264"
+      height="160"
+      alt="${item.flags.alt}">
+      <div class="list__item-inner">
+      <h3 class="list__subtitle">${item.name.common}</h3>
+      <ul class="list__inner-list">
+      <li class="list__inner-item">
+      <strong class="list__bold">Population:</strong> ${item.population}
+      </li>
+      <li class="list__inner-item">
+      <strong class="list__bold">Region:</strong> ${item.region}
+      </li>
+      <li class="list__inner-item">
+      <strong class="list__bold">Capital:</strong> ${item.capital}
+      </li>
+      </ul>
+      </div>
+      `
+      collectorFragment.appendChild(liElement);
+    });
+    elList.appendChild(collectorFragment);
+  } else {
+    elList.textContent = "Please, enter the correct country name";
+  }
 }
 
 getFlagsData("https://restcountries.com/v3.1/all");
 
 elForm.addEventListener("submit", evt => {
   evt.preventDefault();
-
+  
   const elSearchValue = elSearch.value.trim();
   const elSelectValue = elSelect.value;
-
+  
   if(elSelectValue && !elSearchValue) {
     getFlagsData(`https://restcountries.com/v3.1/region/${elSelectValue}`);
   } else if(elSearchValue && !elSelectValue){
