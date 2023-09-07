@@ -7,9 +7,10 @@
 }
 
 .list__list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  grid-auto-rows: 336px;
   gap: 40px 40px;
   @include m.list-unstyled;
   color: var(--main-text-color);
@@ -19,13 +20,15 @@
   display: flex;
   flex-direction: column;
   max-width: 264px;
+  width: 100%;
   background-color: var(--extra-bg-color);
   border-radius: 5px;
   box-shadow: 0px 0px 7px 2px #00000008;
 }
 
 .list__img {
-  flex-grow: 1;
+  max-height: 160px;
+  height: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -55,15 +58,29 @@
   padding: 24px 24px 46px;
 }
 
-@include m.responsive(768px) {
+@include m.responsive(608px) {
   .list__list {
-    justify-content: space-between;
-    gap: 65px 74px;
-  }
-
-  .list__img {
-    height: 184px;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@include m.responsive(768px) {
+  .list__list {
+    gap: 65px 74px;
+  }
+}
+
+@include m.responsive(980px) {
+  .list__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@include m.responsive(1318px) {
+  .list__list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 
 /* List section styles finished */

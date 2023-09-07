@@ -14,19 +14,32 @@
   row-gap: 40px;
 }
 
+.hero__form-inner {
+  display: flex;
+}
+
 .hero__input {
-  padding: 14px 20px 14px 74px;
+  flex-grow: 1;
+  padding: 14px 20px 14px 20px;
   font-size: 12px;
   line-height: 20px;
   color: var(--main-text-color);
   background-color: var(--extra-bg-color);
-  background-image: url("../../images/search.svg");
-  background-repeat: no-repeat;
-  background-position: 32px center;
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0;
   box-shadow: 0px 2px 9px 0px #0000000d;
   border: none;
   outline: none;
+}
+
+.hero__btn {
+  width: 54px;
+  padding: 14px 0;
+  border: none;
+  background-color: var(--extra-bg-color);
+  background-image: url("../../images/search.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px 0 0 5px;
 }
 
 .hero__select {
@@ -45,7 +58,7 @@
   appearance: none;
 }
 
-.dark .hero__input {
+.dark .hero__btn {
   background-image: url("../../images/searchdark.svg");
 }
 
